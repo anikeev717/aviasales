@@ -1,8 +1,8 @@
 import { useActions } from '../../hooks/use-actions';
 
-import classes from './show-tickets.module.scss';
+import classes from './show.module.scss';
 
-export const ShowTickets: React.FC = () => {
+export const Show: React.FC = () => {
   const { showMore } = useActions();
   return (
     <form className={classes.form} name="fetch-form">

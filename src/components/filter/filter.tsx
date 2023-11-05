@@ -3,10 +3,10 @@ import React from 'react';
 import { useActions } from '../../hooks/use-actions';
 import { useTypedSelector } from '../../hooks/use-typed-selector';
 
-import classes from './filter-tickets.module.scss';
+import classes from './filter.module.scss';
 
-export const FilterTickets: React.FC = (): JSX.Element => {
-  const { filter } = useTypedSelector((state) => state);
+export const Filter: React.FC = (): JSX.Element => {
+  const filter = useTypedSelector((state) => state.filter);
   const [none, one, two, three] = filter;
   const { allFilter, noneFilter, oneFilter, twoFilter, threeFilter } = useActions();
 

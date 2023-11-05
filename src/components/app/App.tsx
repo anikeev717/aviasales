@@ -1,11 +1,11 @@
 import { Provider } from 'react-redux';
 
 import logo from '../../assets/images/Logo.svg';
-import { SortTickets } from '../sort-tickets/sort-tickets';
 import { store } from '../../store/index';
-import { ListTickets } from '../list-tickets/list-tickets';
-import { FilterTickets } from '../filter-tickets/filter-tickets';
-import { ShowTickets } from '../show-tickets/show-tickets';
+import { Sort } from '../sort/sort';
+import { List } from '../list/list';
+import { Filter } from '../filter/filter';
+import { Show } from '../show/show';
 
 import classes from './app.module.scss';
 
@@ -17,11 +17,11 @@ export const App: React.FC = () => {
           <img className={classes.logo__image} alt="logo" src={logo} />
         </div>
         <div className={classes.content}>
-          <FilterTickets />
+          <Filter />
           <div className={classes.main}>
-            <SortTickets />
-            <ListTickets />
-            <ShowTickets />
+            <Sort />
+            <List />
+            <Show />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-export type IStateFilter = (number | null)[];
+export type TFilter = (number | null)[];
 
-export enum FilterTypes {
+export enum FilterEnum {
   FILTER_ALL = 'FILTER_ALL',
   FILTER_NONE = 'FILTER_NONE',
   FILTER_ONE = 'FILTER_ONE',
@@ -8,52 +8,52 @@ export enum FilterTypes {
   FILTER_THREE = 'FILTER_THREE',
 }
 export interface FilterAll {
-  type: FilterTypes.FILTER_ALL;
+  type: FilterEnum.FILTER_ALL;
 }
 export interface FilterNone {
-  type: FilterTypes.FILTER_NONE;
+  type: FilterEnum.FILTER_NONE;
 }
 export interface FilterOne {
-  type: FilterTypes.FILTER_ONE;
+  type: FilterEnum.FILTER_ONE;
 }
 export interface FilterTwo {
-  type: FilterTypes.FILTER_TWO;
+  type: FilterEnum.FILTER_TWO;
 }
 export interface FilterThree {
-  type: FilterTypes.FILTER_THREE;
+  type: FilterEnum.FILTER_THREE;
 }
 
 export type FilterAction = FilterAll | FilterNone | FilterOne | FilterTwo | FilterThree;
 
-export enum SortTypes {
+export enum SortEnum {
   SORT_PRICE = 'SORT_PRICE',
   SORT_SPEED = 'SORT_SPEED',
 }
 
 export interface SortPrice {
-  type: SortTypes.SORT_PRICE;
+  type: SortEnum.SORT_PRICE;
 }
 
 export interface SortSpeed {
-  type: SortTypes.SORT_SPEED;
+  type: SortEnum.SORT_SPEED;
 }
 
 export type SortAction = SortPrice | SortSpeed;
 
-export type IStateShowCount = number;
+export type IShow = number;
 
-export enum ShowType {
+export enum ShowEnum {
   SHOW_MORE = 'SHOW_MORE',
 }
 
 export interface ShowAction {
-  type: ShowType.SHOW_MORE;
+  type: ShowEnum.SHOW_MORE;
 }
-export type Tickets = ITicket[] | [];
+export type TTickets = ITicket[] | [];
 
-export interface IStateSearchData {
+export interface ISearch {
   searchId: string;
-  tickets: Tickets;
+  tickets: TTickets;
   stop: boolean;
   loading: boolean;
   error: boolean;
@@ -80,27 +80,27 @@ export interface ITicket {
   ];
 }
 
-export enum SearchTypes {
+export enum SearchEnum {
   SEARCH_SUCCESS_TICKETS = 'SEARCH_SUCCESS_TICKETS',
   SEARCH_SUCCESS_ID = 'SEARCH_SUCCESS_ID',
   SEARCH_LOADING = 'SEARCH_LOADING',
   SEARCH_ERROR = 'SEARCH_ERROR',
 }
 
-export interface SearchSuccessTickets extends Omit<IStateSearchData, 'loading' | 'error' | 'searchId'> {
-  type: SearchTypes.SEARCH_SUCCESS_TICKETS;
+export interface SearchSuccessTickets extends Omit<ISearch, 'loading' | 'error' | 'searchId'> {
+  type: SearchEnum.SEARCH_SUCCESS_TICKETS;
 }
 
-export interface SearchSuccessId extends Omit<IStateSearchData, 'loading' | 'error' | 'tickets' | 'stop'> {
-  type: SearchTypes.SEARCH_SUCCESS_ID;
+export interface SearchSuccessId extends Omit<ISearch, 'loading' | 'error' | 'tickets' | 'stop'> {
+  type: SearchEnum.SEARCH_SUCCESS_ID;
 }
 
 export interface SearchLoading {
-  type: SearchTypes.SEARCH_LOADING;
+  type: SearchEnum.SEARCH_LOADING;
 }
 
 export interface SearchError {
-  type: SearchTypes.SEARCH_ERROR;
+  type: SearchEnum.SEARCH_ERROR;
 }
 
 export type SearchAction = SearchSuccessTickets | SearchSuccessId | SearchLoading | SearchError;

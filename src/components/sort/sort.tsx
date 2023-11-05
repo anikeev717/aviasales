@@ -1,10 +1,10 @@
 import { useTypedSelector } from '../../hooks/use-typed-selector';
 import { useActions } from '../../hooks/use-actions';
-import { SortTypes } from '../../types/types';
+import { SortEnum } from '../../types/types';
 
-import classes from './sort-tickets.module.scss';
+import classes from './sort.module.scss';
 
-export const SortTickets: React.FC = () => {
+export const Sort: React.FC = () => {
   const sortStatus = useTypedSelector((state) => state.sortStatus);
 
   const { priceSort, speedSort } = useActions();
@@ -12,14 +12,14 @@ export const SortTickets: React.FC = () => {
   return (
     <form className={classes.form} name="sort-form">
       <button
-        className={sortStatus === SortTypes.SORT_PRICE ? `${classes.button} ${classes.active}` : `${classes.button}`}
+        className={sortStatus === SortEnum.SORT_PRICE ? `${classes.button} ${classes.active}` : `${classes.button}`}
         type="button"
         onClick={() => priceSort()}
       >
         Самый дешевый
       </button>
       <button
-        className={sortStatus === SortTypes.SORT_SPEED ? `${classes.button} ${classes.active}` : `${classes.button}`}
+        className={sortStatus === SortEnum.SORT_SPEED ? `${classes.button} ${classes.active}` : `${classes.button}`}
         type="button"
         onClick={() => speedSort()}
       >
