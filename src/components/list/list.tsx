@@ -29,7 +29,7 @@ export const List: React.FC = () => {
     if (searchId && !stop) {
       FetchData(searchId);
     }
-  }, [searchId, tickets.length, error]);
+  }, [searchId, tickets, error]);
 
   const ticketsElements = targetTickets(tickets, sortStatus, filter, showCount).map((ticket: ITicket) => {
     return (
