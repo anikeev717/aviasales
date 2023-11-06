@@ -57,6 +57,7 @@ export interface ISearch {
   stop: boolean;
   loading: boolean;
   error: boolean;
+  badResponse: number;
 }
 
 export interface ITicket {
@@ -85,13 +86,14 @@ export enum SearchEnum {
   SEARCH_SUCCESS_ID = 'SEARCH_SUCCESS_ID',
   SEARCH_LOADING = 'SEARCH_LOADING',
   SEARCH_ERROR = 'SEARCH_ERROR',
+  SEARCH_BAD = 'SEARCH_BAD',
 }
 
-export interface SearchSuccessTickets extends Omit<ISearch, 'loading' | 'error' | 'searchId'> {
+export interface SearchSuccessTickets extends Omit<ISearch, 'loading' | 'error' | 'searchId' | 'badResponse'> {
   type: SearchEnum.SEARCH_SUCCESS_TICKETS;
 }
 
-export interface SearchSuccessId extends Omit<ISearch, 'loading' | 'error' | 'tickets' | 'stop'> {
+export interface SearchSuccessId extends Omit<ISearch, 'loading' | 'error' | 'tickets' | 'stop' | 'badResponse'> {
   type: SearchEnum.SEARCH_SUCCESS_ID;
 }
 
@@ -103,4 +105,8 @@ export interface SearchError {
   type: SearchEnum.SEARCH_ERROR;
 }
 
-export type SearchAction = SearchSuccessTickets | SearchSuccessId | SearchLoading | SearchError;
+export interface SearchBad {
+  type: SearchEnum.SEARCH_BAD;
+}
+
+export type SearchAction = SearchSuccessTickets | SearchSuccessId | SearchLoading | SearchError | SearchBad;

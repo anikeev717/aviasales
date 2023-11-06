@@ -1,30 +1,30 @@
-import { Provider } from 'react-redux';
+import { useEffect } from 'react';
 
-import logo from '../../assets/images/Logo.svg';
-import { store } from '../../store/index';
-import { Sort } from '../sort/sort';
-import { List } from '../list/list';
-import { Filter } from '../filter/filter';
-import { Show } from '../show/show';
+import { Logo } from '../logo/logo';
+import { Content } from '../content/content';
+import { useActions } from '../../hooks/use-actions';
+import { useTypedSelector } from '../../hooks/use-typed-selector';
 
 import classes from './app.module.scss';
 
 export const App: React.FC = () => {
+  const { tickets, stop, badResponse, searchId } = useTypedSelector((state) => state.searchData);
+  const { FetchData } = useActions();
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
+  useEffect(() => {
+    if (searchId && !stop) {
+      FetchData(searchId);
+    }
+  }, [searchId, tickets, badResponse]);
+
   return (
-    <Provider store={store}>
-      <div className={classes.app}>
-        <div className={classes.logo}>
-          <img className={classes.logo__image} alt="logo" src={logo} />
-        </div>
-        <div className={classes.content}>
-          <Filter />
-          <div className={classes.main}>
-            <Sort />
-            <List />
-            <Show />
-          </div>
-        </div>
-      </div>
-    </Provider>
+    <div className={classes.app}>
+      <Logo />
+      <Content />
+    </div>
   );
 };

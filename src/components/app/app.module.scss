@@ -9,35 +9,9 @@
   font-style: normal;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto;
-  width: 82px;
-  height: 89px;
-}
-
-.content {
-  margin-top: 35px;
-  display: flex;
-}
-
-.main {
-  margin-left: 20px;
-  width: 100%;
-}
-
 @media screen and (max-width: 990px) {
   .app {
     padding: 30px 50px;
-  }
-  .content {
-    max-width: 502px;
-    margin: 0 auto;
-    flex-direction: column;
-  }
-
-  .main {
-    margin: 0;
   }
 }
 

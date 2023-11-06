@@ -65,6 +65,7 @@ const initialSearchData: ISearch = {
   stop: false,
   loading: false,
   error: false,
+  badResponse: 0,
 };
 
 const searchReducer = (state = initialSearchData, action: SearchAction): ISearch => {
@@ -79,6 +80,9 @@ const searchReducer = (state = initialSearchData, action: SearchAction): ISearch
 
     case SearchEnum.SEARCH_ERROR:
       return { ...state, loading: false, error: true };
+
+    case SearchEnum.SEARCH_BAD:
+      return { ...state, loading: false, error: false, badResponse: state.badResponse + 1 };
 
     case SearchEnum.SEARCH_LOADING:
       return { ...state, loading: true, error: false };

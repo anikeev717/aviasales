@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 import * as types from '../types/types';
 
@@ -54,6 +54,10 @@ export const errorSearch = (): types.SearchError => ({
   type: types.SearchEnum.SEARCH_ERROR,
 });
 
+export const badSearch = (): types.SearchBad => ({
+  type: types.SearchEnum.SEARCH_BAD,
+});
+
 export const FetchData = (searchId?: string) => {
   return async (dispatch: Dispatch<types.SearchAction>) => {
     dispatch(loadingSearch());
@@ -67,7 +71,10 @@ export const FetchData = (searchId?: string) => {
         dispatch({ type: types.SearchEnum.SEARCH_SUCCESS_ID, searchId: resp.data.searchId });
       }
     } catch (error) {
-      dispatch(errorSearch());
+      const err = error as AxiosError;
+      const status: number | undefined = err.response?.status;
+      if (status === 500) dispatch(badSearch());
+      else dispatch(errorSearch());
     }
   };
 };
