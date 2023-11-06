@@ -68,7 +68,7 @@ export const FetchData = (searchId?: string) => {
         dispatch(successTickets(tickets, stop));
       } else {
         const resp = await axios.get(`https://aviasales-test-api.kata.academy/search`);
-        dispatch({ type: types.SearchEnum.SEARCH_SUCCESS_ID, searchId: resp.data.searchId });
+        dispatch(successId(resp.data.searchId));
       }
     } catch (error) {
       const err = error as AxiosError;
