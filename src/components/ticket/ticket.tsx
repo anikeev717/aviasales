@@ -45,24 +45,3 @@ export const Ticket: React.FC<ITicket> = ({ price, carrier, segments }) => {
     </div>
   );
 };
-
-Ticket.defaultProps = {
-  price: 0,
-  carrier: 'W6',
-  segments: [
-    {
-      origin: 'From',
-      destination: 'To',
-      date: '2024-01-01T00:00:00.000Z',
-      stops: [],
-      duration: 0,
-    },
-    {
-      origin: 'From',
-      destination: 'To',
-      date: '2024-01-01T00:00:00.000Z',
-      stops: [],
-      duration: 0,
-    },
-  ],
-} satisfies ITicket;
